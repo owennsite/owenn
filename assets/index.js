@@ -15590,35 +15590,35 @@ const Cu = Ie("X", [["path", {
     })
 }
   , W = [{
+    title: "Nope your too late i already died",
+    artist: "wifiskeleton, i wanna be a jack-o-lantern",
+    coverUrl: "nopeyourtoolate.png",
+    url: "sounds/nopeyourtoolate.mp3",
+    duration: "1:30"
+}, {
     title: "Complicated",
     artist: "Avril Lavigne ",
     coverUrl: "Complicated.png",
     url: "/sounds/Complicated.mp3",
     duration: "4:13"
 }, {
-    title: "Bleach",
-    artist: "Bladee, Ecco2k",
-    coverUrl: "Bleach.png",
-    url: "sounds/Bleach.mp3",
-    duration: "2:24"
+    title: "t r a n s p a r e n t s o u l",
+    artist: "WILLOW, Travis Barker",
+    coverUrl: "transparentsoul.png",
+    url: "sounds/transparentsoul.mp3",
+    duration: "2:48"
 }, {
-    title: "Snowmen",
-    artist: "Xavier Wulf, Ecco2k, Bladee",
-    coverUrl: "Snowmen.png",
-    url: "sounds/Snowmen.mp3",
-    duration: "3:35"
+    title: "Ain't It Fun",
+    artist: "Paramore",
+    coverUrl: "aintitfun.png",
+    url: "sounds/aintitfun.mp3",
+    duration: "4:56"
 }, {
-    title: "Angels",
-    artist: "A$AP Rocky",
-    coverUrl: "L.L.A.png",
-    url: "sounds/Angels.mp3",
-    duration: "3:47"
-}, {
-    title: "Dolemite",
-    artist: "$uicideboy$, Ramirez",
-    coverUrl: "Dolemite.png",
-    url: "sounds/Dolemite.mp3",
-    duration: "3:25"
+    title: "All I Wanted",
+    artist: "Paramore",
+    coverUrl: "alliwanted.png",
+    url: "sounds/alliwanted.mp3",
+    duration: "3:45"
 }, {
     title: "Side by Side",
     artist: "Bladee, Thaiboy Digital",
@@ -16816,11 +16816,11 @@ function aS() {
                             d: "M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.534.26l.213-3.053 5.56-5.023c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"
                         })
                     }), g.jsx("a", {
-                        href: "https://t.me/spiritive",
+                        href: "https://t.me/TemporalLobeNecrosis",
                         target: "_blank",
                         rel: "noopener noreferrer",
                         className: "hover:text-white transition-colors text-xs",
-                        children: "@spiritive"
+                        children: "@TemporalLobeNecrosis"
                     })]
                 }), g.jsxs("div", {
                     className: "flex items-center gap-2 text-gray-400",
