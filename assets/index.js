@@ -15620,131 +15620,167 @@ const Cu = Ie("X", [["path", {
     url: "sounds/alliwanted.mp3",
     duration: "3:45"
 }, {
-    title: "Side by Side",
-    artist: "Bladee, Thaiboy Digital",
-    coverUrl: "Side by Side.png",
-    url: "sounds/Side by Side.mp3",
-    duration: "2:17"
+    title: "The Less I Know The Better",
+    artist: "Tame Impala",
+    coverUrl: "thelessiknow.png",
+    url: "sounds/thelessiknow.mp3",
+    duration: "3:36"
 }]
-  , iS = ({audioRef: e, audioContextAllowed: t}) => {
-    const [n,r] = S.useState(0)
-      , [i,s] = S.useState(!1)
-      , [o,l] = S.useState(0)
-      , [a,u] = S.useState("0:00")
-      , [c,f] = S.useState(50)
-      , [d,y] = S.useState(!1)
-      , [v,x] = S.useState(!1)
-      , [T,p] = S.useState(!1)
-      , [h,m] = S.useState(!1)
-      , [w,k] = S.useState(!1)
-      , [P,N] = S.useState(!1)
-      , [C,I] = S.useState({})
-      , V = S.useRef(null)
-      , H = S.useRef(null)
-      , fe = S.useRef(null)
-      , O = S.useRef()
-      , L = S.useRef(0)
-      , j = S.useRef({});
-    S.useEffect( () => ((async () => {
-        const G = {};
-        await Promise.all(W.map(async ae => {
-            const At = new Image;
-            At.src = ae.coverUrl,
-            await At.decode(),
-            G[ae.coverUrl] = ae.coverUrl
-        }
-        )),
-        I(G)
-    }
-    )(),
-    [0, 1].forEach(G => {
-        const ae = new Audio(W[G].url);
-        ae.preload = "auto",
-        j.current[W[G].url] = ae
-    }
-    ),
-    () => {
-        O.current && clearTimeout(O.current),
-        Object.values(j.current).forEach(G => G.remove())
-    }
-    ), []),
-    S.useEffect( () => {
-        [W[n === 0 ? W.length - 1 : n - 1].url, W[n === W.length - 1 ? 0 : n + 1].url].forEach(G => {
-            if (!j.current[G]) {
-                const ae = new Audio(G);
-                ae.preload = "auto",
-                j.current[G] = ae
+    const iS = ({ audioRef: e, audioContextAllowed: t }) => {
+        const shuffleArray = (arr) => {
+            const newArr = [...arr];
+            for (let i = newArr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
             }
-        }
-        )
-    }
-    , [n]);
-    const J = B => (j.current[B] || (j.current[B] = new Audio(B),
-    j.current[B].preload = "auto"),
-    j.current[B])
-      , z = async () => {
-        if (!(!e.current || !t))
-            try {
-                if (k(!0),
-                i)
-                    await e.current.pause(),
-                    L.current = e.current.currentTime,
-                    s(!1);
-                else {
-                    const B = J(W[n].url);
-                    e.current.src !== B.src && (e.current.src = B.src),
-                    L.current > 0 && (e.current.currentTime = L.current),
-                    await e.current.play(),
-                    s(!0)
+            return newArr;
+        };
+
+        const [playlist, setPlaylist] = S.useState(() => shuffleArray(W)); // shuffled playlist
+        const [n, r] = S.useState(0); // current index
+        const [i, s] = S.useState(!1),
+            [o, l] = S.useState(0),
+            [a, u] = S.useState("0:00"),
+            [c, f] = S.useState(50),
+            [d, y] = S.useState(!1),
+            [v, x] = S.useState(!1),
+            [T, p] = S.useState(!1),
+            [h, m] = S.useState(!1),
+            [w, k] = S.useState(!1),
+            [P, N] = S.useState(!1),
+            [C, I] = S.useState({});
+
+        const V = S.useRef(null),
+            H = S.useRef(null),
+            fe = S.useRef(null),
+            O = S.useRef(),
+            L = S.useRef(0),
+            j = S.useRef({});
+
+        S.useEffect(() => {
+            (async () => {
+                const G = {};
+                await Promise.all(playlist.map(async ae => {
+                    const At = new Image;
+                    At.src = ae.coverUrl;
+                    await At.decode();
+                    G[ae.coverUrl] = ae.coverUrl;
+                }));
+                I(G);
+            })();
+
+            [0, 1].forEach(G => {
+                const ae = new Audio(playlist[G].url);
+                ae.preload = "auto";
+                j.current[playlist[G].url] = ae;
+            });
+
+            return () => {
+                O.current && clearTimeout(O.current);
+                Object.values(j.current).forEach(G => G.remove());
+            };
+        }, []);
+
+        S.useEffect(() => {
+            const prevIndex = n === 0 ? playlist.length - 1 : n - 1;
+            const nextIndex = n === playlist.length - 1 ? 0 : n + 1;
+
+            [playlist[prevIndex].url, playlist[nextIndex].url].forEach(G => {
+                if (!j.current[G]) {
+                    const ae = new Audio(G);
+                    ae.preload = "auto";
+                    j.current[G] = ae;
                 }
-            } catch (B) {
-                console.error("Playback failed:", B),
-                s(!1)
-            } finally {
-                k(!1)
+            });
+        }, [n]);
+
+        const J = B => {
+            if (!j.current[B]) {
+                j.current[B] = new Audio(B);
+                j.current[B].preload = "auto";
             }
-    }
-      , E = () => {
-        L.current = 0,
-        r(B => B === 0 ? W.length - 1 : B - 1),
-        s(!1),
-        e.current && (e.current.currentTime = 0,
-        e.current.src = W[n === 0 ? W.length - 1 : n - 1].url)
-    }
-      , A = () => {
-        L.current = 0,
-        r(B => B === W.length - 1 ? 0 : B + 1),
-        s(!1),
-        e.current && (e.current.currentTime = 0,
-        e.current.src = W[n === W.length - 1 ? 0 : n + 1].url)
-    }
-      , R = B => {
-        const G = Math.floor(B / 60)
-          , ae = Math.floor(B % 60);
-        return `${G}:${ae.toString().padStart(2, "0")}`
-    }
-      , $ = B => {
-        const [G,ae] = B.split(":").map(Number);
-        return `${G} minute${G !== 1 ? "s" : ""} ${ae} second${ae !== 1 ? "s" : ""}`
-    }
-      , _ = B => {
-        y(!0),
-        se(B)
-    }
-      , X = B => {
-        x(!0),
-        nn(B)
-    }
-      , se = B => {
-        if (V.current && e.current) {
-            const G = V.current.getBoundingClientRect()
-              , At = Math.max(0, Math.min(B.clientX - G.left, G.width)) / G.width * 100;
-            l(At),
-            e.current.currentTime = At / 100 * e.current.duration,
-            u(R(e.current.currentTime)),
-            L.current = e.current.currentTime
-        }
-    }
+            return j.current[B];
+        };
+
+        const z = async () => {
+            if (!(!e.current || !t)) {
+                try {
+                    k(!0);
+                    if (i) {
+                        await e.current.pause();
+                        L.current = e.current.currentTime;
+                        s(!1);
+                    } else {
+                        const B = J(playlist[n].url);
+                        e.current.src !== B.src && (e.current.src = B.src);
+                        L.current > 0 && (e.current.currentTime = L.current);
+                        await e.current.play();
+                        s(!0);
+                    }
+                } catch (B) {
+                    console.error("Playback failed:", B);
+                    s(!1);
+                } finally {
+                    k(!1);
+                }
+            }
+        };
+
+        const E = () => {
+            L.current = 0;
+            const newIndex = n === 0 ? playlist.length - 1 : n - 1;
+            r(newIndex);
+            s(!1);
+            if (e.current) {
+                e.current.currentTime = 0;
+                e.current.src = playlist[newIndex].url;
+            }
+        };
+
+        const A = () => {
+            L.current = 0;
+            const newIndex = n === playlist.length - 1 ? 0 : n + 1;
+            r(newIndex);
+            s(!1);
+            if (e.current) {
+                e.current.currentTime = 0;
+                e.current.src = playlist[newIndex].url;
+            }
+        };
+
+        const R = B => {
+            const G = Math.floor(B / 60);
+            const ae = Math.floor(B % 60);
+            return `${G}:${ae.toString().padStart(2, "0")}`;
+        };
+
+        const $ = B => {
+            const [G, ae] = B.split(":").map(Number);
+            return `${G} minute${G !== 1 ? "s" : ""} ${ae} second${ae !== 1 ? "s" : ""}`;
+        };
+
+        const _ = B => {
+            y(!0);
+            se(B);
+        };
+
+        const X = B => {
+            x(!0);
+            nn(B);
+        };
+
+        const se = B => {
+            if (V.current && e.current) {
+                const G = V.current.getBoundingClientRect();
+                const At = Math.max(0, Math.min(B.clientX - G.left, G.width)) / G.width * 100;
+                l(At);
+                e.current.currentTime = At / 100 * e.current.duration;
+                u(R(e.current.currentTime));
+                L.current = e.current.currentTime;
+            }
+        };
+    };
+
       , nn = B => {
         if (H.current) {
             const G = H.current.getBoundingClientRect()
