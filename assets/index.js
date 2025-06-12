@@ -1,5 +1,3 @@
-import React, { useRef, useState, useEffect } from "react";
-
 (function() {
     const t = document.createElement("link").relList;
     if (t && t.supports && t.supports("modulepreload"))
@@ -15591,121 +15589,43 @@ const Cu = Ie("X", [["path", {
         className: "fixed top-0 left-0 w-full h-full pointer-events-none z-0"
     })
 }
-
-const W = [
-  {
+  , W = [{
     title: "Complicated",
-    artist: "Avril Lavigne",
+    artist: "Avril Lavigne ",
     coverUrl: "Highway Patrol.png",
     url: "sounds/Complicated.mp3",
-    videoUrl: "videos/Complicated.mp4",
     duration: "4:13"
-  },
-  {
+}, {
     title: "Bleach",
     artist: "Bladee, Ecco2k",
     coverUrl: "Bleach.png",
     url: "sounds/Bleach.mp3",
-    videoUrl: "videos/Bleach.mp4",
     duration: "2:24"
-  },
-]
-
-export default function Player({ audioRef, audioContextAllowed }) {
-  const [current, setCurrent] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const videoRef = useRef(null);
-  const audioEl = useRef(new Audio());
-
-  // Sync video with current song
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video && W[current].videoUrl) {
-      video.src = W[current].videoUrl;
-      video.load();
-      video.play().catch(console.error);
-    }
-  }, [current]);
-
-  // Cleanup
-  useEffect(() => {
-    return () => {
-      audioEl.current.pause();
-    };
-  }, []);
-
-  const togglePlay = async () => {
-    const audio = audioEl.current;
-    const song = W[current];
-
-    if (!audioContextAllowed) return;
-
-    setLoading(true);
-
-    try {
-      if (isPlaying) {
-        await audio.pause();
-        setIsPlaying(false);
-      } else {
-        if (audio.src !== song.url) {
-          audio.src = song.url;
-        }
-        await audio.play();
-        setIsPlaying(true);
-      }
-    } catch (err) {
-      console.error("Audio play error", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const nextSong = () => {
-    setCurrent((prev) => (prev + 1) % W.length);
-    setIsPlaying(false);
-  };
-
-  const prevSong = () => {
-    setCurrent((prev) => (prev - 1 + W.length) % W.length);
-    setIsPlaying(false);
-  };
-
-  return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {/* Background Video */}
-      <video
-        ref={videoRef}
-        className="fixed top-0 left-0 w-full h-full object-cover z-[-1]"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
-        <source src={W[current].videoUrl} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-      {/* Audio Player UI */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-white">
-        <h1 className="text-3xl font-bold">{W[current].title}</h1>
-        <p className="text-xl mb-4">{W[current].artist}</p>
-        <div className="flex gap-4">
-          <button onClick={prevSong} className="bg-white/20 px-4 py-2 rounded">
-            Prev
-          </button>
-          <button onClick={togglePlay} className="bg-white/20 px-4 py-2 rounded">
-            {loading ? "Loading..." : isPlaying ? "Pause" : "Play"}
-          </button>
-          <button onClick={nextSong} className="bg-white/20 px-4 py-2 rounded">
-            Next
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-  
+}, {
+    title: "Snowmen",
+    artist: "Xavier Wulf, Ecco2k, Bladee",
+    coverUrl: "Snowmen.png",
+    url: "sounds/Snowmen.mp3",
+    duration: "3:35"
+}, {
+    title: "Angels",
+    artist: "A$AP Rocky",
+    coverUrl: "L.L.A.png",
+    url: "sounds/Angels.mp3",
+    duration: "3:47"
+}, {
+    title: "Dolemite",
+    artist: "$uicideboy$, Ramirez",
+    coverUrl: "Dolemite.png",
+    url: "sounds/Dolemite.mp3",
+    duration: "3:25"
+}, {
+    title: "Side by Side",
+    artist: "Bladee, Thaiboy Digital",
+    coverUrl: "Side by Side.png",
+    url: "sounds/Side by Side.mp3",
+    duration: "2:17"
+}]
   , iS = ({audioRef: e, audioContextAllowed: t}) => {
     const [n,r] = S.useState(0)
       , [i,s] = S.useState(!1)
