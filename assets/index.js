@@ -15592,8 +15592,8 @@ const Cu = Ie("X", [["path", {
   , W = [{
     title: "Complicated",
     artist: "Avril Lavigne ",
-    coverUrl: "Highway Patrol.png",
-    url: "sounds/Complicated.mp3",
+    coverUrl: "Complicated.png",
+    url: "./sounds/Complicated.mp3",
     duration: "4:13"
 }, {
     title: "Bleach",
