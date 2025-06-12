@@ -16,21 +16,7 @@ const l = o("ExternalLink", [["path", {
     key: "a6xqqp"
 }]])
   , p = () => {
-    const [c,s] = n.useState("...");
-    return n.useEffect( () => {
-        (async () => {
-            try {
-                const r = (await (await fetch("https://api.cursi.ng/getcount")).json()).user_count
-                  , a = Math.floor(r / 5e3) * 5e3;
-                s(`${a / 1e3}${r >= a + 5e3 ? "+" : ""}k+`)
-            } catch (t) {
-                console.error("Failed to fetch user count:", t),
-                s("...")
-            }
-        }
-        )()
-    }
-    , []),
+    const [c, s] = n.useState("70k");
     e.jsxs(i.div, {
         initial: {
             opacity: 0,
@@ -50,8 +36,8 @@ const l = o("ExternalLink", [["path", {
         }), e.jsxs("div", {
             className: "flex items-start gap-3 bg-zinc-900/20 rounded p-3 hover:bg-zinc-900/40 transition-colors",
             children: [e.jsx("img", {
-                src: "heist.png",
-                alt: "Heist Logo",
+                src: "sunshineandrainbows.png",
+                alt: "sunshineandrainbows Logo",
                 className: "w-8 h-8 rounded"
             }), e.jsxs("div", {
                 className: "flex-1",
@@ -77,7 +63,7 @@ const l = o("ExternalLink", [["path", {
                     })]
                 }), e.jsx("p", {
                     className: "text-xs text-gray-400",
-                    children: "Discord App focused on enhancing your chats."
+                    children: "Verified Discord bot managing thousands of users."
                 }), e.jsxs("div", {
                     className: "flex gap-1 mt-2",
                     children: [e.jsx("span", {
