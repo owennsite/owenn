@@ -15593,7 +15593,7 @@ const Cu = Ie("X", [["path", {
     title: "Complicated",
     artist: "Avril Lavigne ",
     coverUrl: "Complicated.png",
-    url: "./sounds/Complicated.mp3",
+    url: "/sounds/Complicated.mp3",
     duration: "4:13"
 }, {
     title: "Bleach",
@@ -16816,11 +16816,11 @@ function aS() {
                             d: "M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.534.26l.213-3.053 5.56-5.023c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"
                         })
                     }), g.jsx("a", {
-                        href: "https://t.me/strawberrycondom",
+                        href: "https://t.me/spiritive",
                         target: "_blank",
                         rel: "noopener noreferrer",
                         className: "hover:text-white transition-colors text-xs",
-                        children: "@strawberrycondom"
+                        children: "@spiritive"
                     })]
                 }), g.jsxs("div", {
                     className: "flex items-center gap-2 text-gray-400",
@@ -17043,7 +17043,7 @@ function aS() {
                     className: "mt-6",
                     children: [g.jsx("p", {
                         className: "text-xs text-gray-400 mb-1",
-                        children: "currently in rotation — a personal collection of music i've been listening to lately"
+                        children: "currently in rotation. A personal collection of music i've been listening to lately"
                     }), g.jsx(iS, {
                         audioRef: o,
                         audioContextAllowed: l
