@@ -16598,7 +16598,7 @@ const Cu = Ie("X", [["path", {
         })]
     }) : null
 }
-  , lS = S.lazy( () => yy( () => import("./Projects-CO2Xcpwk.js"), []))
+  , lS = S.lazy( () => yy( () => import("./projects.js"), []))
   , Fo = "1016818217290846218"
   , ed = e => {
     const t = Math.floor(e / 60)
